@@ -299,12 +299,12 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgb(43, 33, 136) 0%, rgb(6
               <div class="container">
                 <div class="row">
 
-                  <div class="modal fade" id="ignismyModal" role="dialog">
+                  <div class="modal fade" id="ignismyModal" role="dialog" data-keyboard="false" data-backdrop="static">
                     <div class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal"
-                                  aria-label=""><span>×</span></button>
+<!--                          <button type="button" class="close" data-dismiss="modal"-->
+<!--                                  aria-label=""><span>×</span></button>-->
                         </div>
 
                         <div class="modal-body">
@@ -962,7 +962,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgb(0, 0, 0) 0%, rgb(rgb(1
       document.getElementById("submittedbutton").click();
 
 
-      const res = fetch('https://boiling-plains-71911.herokuapp.com/submit', {
+      fetch('https://boiling-plains-71911.herokuapp.com/submit', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -978,6 +978,11 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgb(0, 0, 0) 0%, rgb(rgb(1
           descriptioncity: document.getElementById('id_questioncity').value
 
         }),
+      }).then(r=>{
+        document.getElementById("id_name").value='';
+      }).catch(e=>{
+        document.getElementById("id_name").value='';
+
       })
 
     }
